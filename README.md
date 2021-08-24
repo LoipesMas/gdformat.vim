@@ -1,6 +1,3 @@
-# Disclaimer
-This is an early version, barely working.
-
 # About
 A simple wrapper for [gdformat](https://github.com/Scony/godot-gdscript-toolkit).
 
