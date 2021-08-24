@@ -8,6 +8,12 @@ Obviously requires `gdformat` from [godot-gdscript-toolkit](https://github.com/S
 
 If it's not in your PATH, you need to set `g:gdformat_path` to it's path.
 
+# Installation
+Install using your favourite plugin manager.
+
+For example `Plug 'loipesmas/gdformat.vim'` for vim-plug.
+
+You also need to install `gdformat`, for example with `pip install gdtoolkit`.
 
 # Usage
 Use command `:GDFormat` to format current buffer.
