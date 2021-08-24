@@ -12,11 +12,13 @@ EOF
 
 command! -nargs=0 GDFormat call GDFormat()
 
+if !exists("g:gdformat_on_write")
+    let g:gdformat_on_write = 0
+endif
+
 function! GDFormat()
     py3 vim_gdformat.gdformat()
 endfunction
-
-let g:gdformat_on_write = 0
 
 function! GDFormatOnWrite()
     if g:gdformat_on_write == 1
