@@ -13,18 +13,9 @@ If it's not in your PATH, you need to set `g:gdformat_path` to it's path.
 
 
 # Usage
-Example (put this in your vim config):
-```
-function! FormatGDScript()
-  py3f <path-to-file>/vim-gdformat.py
-endfunction
-autocmd BufWritePre *.gd call FormatGDScript()
-```
-(This will automagically format the file when you save it)
+Use command `:GDFormat` to format current buffer.
 
-
-# TODO
-Make this into a vim plugin somehow
+You can also do `let g:gdformat_on_write = 1` in your vim config to automatically format on write.
 
 # Contributing
 Contributions are very welcome! Just open an issue or a PR.
