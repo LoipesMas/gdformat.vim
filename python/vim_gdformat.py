@@ -9,20 +9,11 @@ import subprocess
 import sys
 import vim
 
-# set g:gdformat_path to the path to clang-format if it is not on the path
+# set g:gdformat_path to the path to gdformat if it is not on the path
 # Change this to the full path if gdformat is not on the path.
 binary = 'gdformat'
 if vim.eval('exists("g:gdformat_path")') == "1":
     binary = vim.eval('g:gdformat_path')
-
-# Change this to format according to other formatting styles. See the output of
-# 'gdformat --help' for a list of supported styles. The default looks for
-# a '.gdformat' or '_gdformat' file to indicate the style that should be
-# used.
-style = None
-fallback_style = None
-if vim.eval('exists("g:gdformat_fallback_style")') == "1":
-    fallback_style = vim.eval('g:gdformat_fallback_style')
 
 
 def get_buffer(encoding):
@@ -31,7 +22,7 @@ def get_buffer(encoding):
     return [line.decode(encoding) for line in vim.current.buffer]
 
 
-def main():
+def gdformat():
     # Get the current text.
     encoding = vim.eval("&encoding")
     buf = get_buffer(encoding)
@@ -69,4 +60,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    gdformat()
