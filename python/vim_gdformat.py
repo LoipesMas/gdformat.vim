@@ -48,7 +48,14 @@ def gdformat():
         print(stderr.decode(encoding))
         return
 
-    if not stdout:
+    if p.returncode == 1:
+        lines = stdout.decode(encoding).split('\n')[:-1]
+        cursor_line, cursor_column = [int(x)
+                                      for x in lines[1].strip().split(':')]
+        vim.command('call cursor(%d, %d)' % (cursor_line, cursor_column))
+        print(stdout.decode(encoding), file=sys.stderr)
+
+    elif not stdout:
         print('No output from gdformat (crashed?).')
     else:
         lines = stdout.decode(encoding).split('\n')[:-1]
