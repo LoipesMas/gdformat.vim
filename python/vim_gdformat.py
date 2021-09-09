@@ -45,15 +45,13 @@ def gdformat():
 
     # If errors, print errors and return
     if stderr:
+        if p.returncode == 1:
+            lines = stderr.decode(encoding).split('\n')[:-1]
+            split_line = lines[5].split(' ')
+            cursor_line = int(split_line[-3][:-1])
+            cursor_column = int(split_line[-1][:-1])
+            vim.command('call cursor(%d, %d)' % (cursor_line, cursor_column))
         print(stderr.decode(encoding))
-        return
-
-    if p.returncode == 1:
-        lines = stdout.decode(encoding).split('\n')[:-1]
-        cursor_line, cursor_column = [int(x)
-                                      for x in lines[1].strip().split(':')]
-        vim.command('call cursor(%d, %d)' % (cursor_line, cursor_column))
-        print(stdout.decode(encoding), file=sys.stderr)
 
     elif not stdout:
         print('No output from gdformat (crashed?).')
@@ -63,7 +61,6 @@ def gdformat():
         for op in reversed(sequence.get_opcodes()):
             if op[0] != 'equal':
                 vim.current.buffer[op[1]:op[2]] = lines[op[3]:op[4]]
-    return
 
 
 if __name__ == "__main__":
