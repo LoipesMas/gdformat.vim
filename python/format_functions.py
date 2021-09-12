@@ -25,6 +25,8 @@ def run_binary(binary, text, startupinfo):
     Runs passed binary on passed text with passed startupinfo
     """
     command = [binary, "-"]
+
+    # pylint: disable=consider-using-with
     proc = subprocess.Popen(
         command,
         stdout=subprocess.PIPE,

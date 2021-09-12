@@ -1,4 +1,3 @@
-pip3 install pytest gdtoolkit pylint
-pylint ./python
-cd python
+pip3 install pytest gdtoolkit pylint &&
+cd python &&
 python -m pytest
