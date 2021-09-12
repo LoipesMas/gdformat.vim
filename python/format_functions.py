@@ -35,7 +35,7 @@ def run_binary(binary, text, startupinfo):
     return (*proc.communicate(input=text), proc.returncode)
 
 
-def parse_error_output(err) -> tuple[int, int]:
+def parse_error_output(err) -> tuple:
     """
     Parses gdformat's error and returns line and column
     """
