@@ -6,3 +6,33 @@ var
 Unexpected token Token(_NL, '\n\n\n') at line 6, column 5.
 Expected one of: 
 	* NAME
+Traceback (most recent call last):
+  File "/home/bap/.local/lib/python3.9/site-packages/lark/parsers/lalr_parser.py", line 61, in get_action
+    return states[state][token.type]
+KeyError: '_NL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/bap/.local/bin/gdformat", line 8, in <module>
+    sys.exit(main())
+  File "/home/bap/.local/lib/python3.9/site-packages/gdtoolkit/formatter/__main__.py", line 66, in main
+    code_parse_tree = parser.parse(code, gather_metadata=True)
+  File "/home/bap/.local/lib/python3.9/site-packages/gdtoolkit/parser/parser.py", line 61, in parse
+    self._parser_with_metadata.parse(code)
+  File "/home/bap/.local/lib/python3.9/site-packages/lark/lark.py", line 293, in parse
+    return self.parser.parse(text, start=start)
+  File "/home/bap/.local/lib/python3.9/site-packages/lark/parser_frontends.py", line 124, in parse
+    return self._parse(token_stream, start, set_parser_state)
+  File "/home/bap/.local/lib/python3.9/site-packages/lark/parser_frontends.py", line 54, in _parse
+    return self.parser.parse(input, start, *args)
+  File "/home/bap/.local/lib/python3.9/site-packages/lark/parsers/lalr_parser.py", line 35, in parse
+    return self.parser.parse(*args)
+  File "/home/bap/.local/lib/python3.9/site-packages/lark/parsers/lalr_parser.py", line 85, in parse
+    action, arg = get_action(token)
+  File "/home/bap/.local/lib/python3.9/site-packages/lark/parsers/lalr_parser.py", line 64, in get_action
+    raise UnexpectedToken(token, expected, state=state)
+lark.exceptions.UnexpectedToken: Unexpected token Token(_NL, '\n\n\n') at line 6, column 5.
+Expected one of: 
+	* NAME
+

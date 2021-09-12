@@ -47,7 +47,8 @@ def gdformat():
         if returncode == 1:
             err = stderr.decode(encoding)
             cursor_line, cursor_column = parse_error_output(err)
-            vim.command("call cursor(%d, %d)" % (cursor_line, cursor_column))
+            if cursor_line != cursor_column != -1:
+                vim.command("call cursor(%d, %d)" % (cursor_line, cursor_column))
         print(stderr.decode(encoding))
 
     elif not stdout:

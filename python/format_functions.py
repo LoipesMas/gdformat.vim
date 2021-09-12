@@ -29,10 +29,14 @@ def run_binary(binary, text, startupinfo):
 def parse_error_output(err):
     """Parses gdformat's error and returns line and column"""
     lines = err.split("\n")[:-1]
-    split_line = lines[5].split(" ")
-    cursor_line = int(split_line[-3][:-1])
-    cursor_column = int(split_line[-1][:-1])
-    return cursor_line, cursor_column
+    for line in lines:
+        if not line.startswith("lark.exceptions.UnexpectedToken"):
+            continue
+        split_line = line.split(' ')
+        cursor_line = int(split_line[-3][:-1])
+        cursor_column = int(split_line[-1][:-1])
+        return cursor_line, cursor_column
+    return -1, -1
 
 
 if __name__ == "__main__":
