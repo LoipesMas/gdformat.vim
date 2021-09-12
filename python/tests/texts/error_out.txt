@@ -1,0 +1,8 @@
+STDIN:
+
+var 
+    ^
+
+Unexpected token Token(_NL, '\n\n\n') at line 6, column 5.
+Expected one of: 
+	* NAME
